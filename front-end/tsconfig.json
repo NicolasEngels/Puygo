@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "moduleResolution": "node",
+        "module": "esnext",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "jsx": "react-jsx",
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "noUnusedParameters": true,
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": [
+                "components/*"
+            ],
+            "@utils/*": [
+                "utils/*"
+            ],
+            "auth_config.json": [
+                "./src/auth_config.json"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*", 
+        "src/custom.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ]
+}
