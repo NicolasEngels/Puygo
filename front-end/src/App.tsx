@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Container } from "reactstrap";
+import { Box } from "@chakra-ui/react";
 
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
@@ -28,10 +28,9 @@ const App = () => {
   return (
     <div id="app">
         <BrowserRouter>
-            <div id="app" className="d-flex flex-column h-100">
+              <Box id="app" display='flex'>
                 <NavBar />
-                
-                <Container className="flex-grow-1 mt-5">
+                <Box>
                     <Routes>
                         <Route path="/" Component={Home} />
                         <Route path="/profile" Component={Profile} />
@@ -40,8 +39,8 @@ const App = () => {
                         <Route path="/statistics" Component={Statistics} />
                         <Route path="/historic" Component={Historic} />
                     </Routes>
-                </Container>
-            </div>
+                </Box>
+            </Box>
         </BrowserRouter>
     </div>
   );

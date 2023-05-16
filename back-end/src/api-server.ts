@@ -11,7 +11,7 @@ const appOrigin = authConfig.appOrigin || `http://localhost:3000`;
 const port = process.env.SERVER_PORT || 3001;
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: authConfig.appOrigin,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));

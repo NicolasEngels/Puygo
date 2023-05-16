@@ -17,6 +17,10 @@
   }
 }
 
+.logo{
+    background-image: url(../src/assets/logo.svg);
+}
+
 .spinner {
   position: absolute;
   display: flex;
