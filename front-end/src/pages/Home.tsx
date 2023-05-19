@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Text, Button } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from '../components/LoginButton';
+import LogoutButton from '../components/LogoutButton';
 
 function Home() {
     const [backendMessagePublic, setBackendMessagePublic] = useState<any>(null);
@@ -13,8 +15,6 @@ function Home() {
 
     const {
         isAuthenticated,
-        loginWithRedirect,
-        logout,
         getAccessTokenSilently
     } = useAuth0();
 
@@ -55,13 +55,6 @@ function Home() {
         }
     }
 
-    const logoutWithRedirect = () =>
-        logout({
-            logoutParams: {
-                returnTo: window.location.origin,
-            }
-        });
-
     return (
         <Box className="App">
             <Text>Hello World  - frontend</Text>
@@ -86,17 +79,10 @@ function Home() {
                 {isAuthenticated ? (
                     <>
                         <Text>Loged in !</Text>
-
-                        <Button variant='solid' onClick={logoutWithRedirect}>
-                            Logout
-                        </Button>
+                        <LogoutButton></LogoutButton>
                     </>
                 ) : (
-                    <>
-                        <Button variant='solid' onClick={() => loginWithRedirect({})}>
-                            Login
-                        </Button>
-                    </>
+                    <LoginButton />
                 )}
             </Box>
         </Box>
