@@ -8,7 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.get('/', (req, res) => {
-    res.send('Hello, world!');
+    res.send('Hello, world! - backend');
 });
 const port = process.env.SERVER_PORT;
 app.listen(port, () => {
