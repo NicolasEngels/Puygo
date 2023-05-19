@@ -19,8 +19,8 @@ function Home() {
     } = useAuth0();
 
     const callApiPublic = () => {
-
-        fetch(`${process.env.REACT_APP_BACKEND_URL}` || '')
+        console.log(process.env.REACT_APP_BACKEND_URL)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/public` || '')
             .then(response => response.json())
             .then(data => {
                 setBackendMessagePublic(data)
