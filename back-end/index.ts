@@ -17,6 +17,10 @@ const checkJwt = auth({
     issuerBaseURL: `https://${process.env.DOMAIN}/`,
 });
 
+app.get('/', (req: Request, res: Response) => {
+    res.send({ msg: "You are connected to the back-end! (home route)" });
+});
+
 app.get('/public', (req: Request, res: Response) => {
     res.send({ msg: "You are connected to the back-end! (public route)" });
 });
