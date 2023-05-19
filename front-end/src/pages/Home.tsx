@@ -20,7 +20,7 @@ function Home() {
 
     const callApiPublic = () => {
 
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/public` || '')
+        fetch(`${process.env.REACT_APP_BACKEND_URL}public` || '')
             .then(response => response.json())
             .then(data => {
                 setBackendMessagePublic(data)
