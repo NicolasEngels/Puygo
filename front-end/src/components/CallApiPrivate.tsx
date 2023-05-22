@@ -5,9 +5,9 @@ import { useState } from 'react';
 function CallApiPrivate() {
 
     const [state, setState] = useState({
-        showResult: false,
+        status : null as null | number,
         apiMessage: null,
-        error: null,
+        error: null as null | string,
     });
 
     const {
@@ -28,14 +28,14 @@ function CallApiPrivate() {
 
             setState({
                 ...state,
-                showResult: true,
+                status : 200,
                 apiMessage: responseData.msg,
             });
         } catch (error: any) {
             setState({
                 ...state,
-                showResult: true,
-                apiMessage: error.error,
+                status : 401,
+                error: ' - Unauthorized',
             });
         }
     }
@@ -43,11 +43,7 @@ function CallApiPrivate() {
     return (
         <Box>
             <Button onClick={callApiPrivate}>call back-end - private</Button>
-            {state.showResult && state.apiMessage && (
-                <Text>
-                    <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-                </Text>
-            )}
+            <Text>{state?.status}{state?.apiMessage}{state?.error}</Text>
         </Box>
     );
 }

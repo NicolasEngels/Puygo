@@ -25,7 +25,7 @@ app.get('/public', (req, res) => {
     res.send({ msg: "You are connected to the back-end! (public route)" });
 });
 app.get('/private', checkJwt, (req, res) => {
-    res.send({ msg: "You are connected to the back-end! (private route)" });
+    res.send({ msg: " - You are connected to the back-end! (private route)" });
 });
 const port = process.env.SERVER_PORT;
 app.listen(port, () => {
