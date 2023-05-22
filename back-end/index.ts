@@ -25,7 +25,7 @@ app.get('/private', checkJwt, (req: Request, res: Response) => {
     res.json({ msg: " - You are connected to the back-end! (private route)" });
 });
 
-const port = config.REACT_APP_SERVER_PORT;
+const port = 3001;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
