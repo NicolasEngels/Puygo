@@ -15,7 +15,7 @@ function LogoutButton() {
         });
 
     return (
-        <Button variant='solid' onClick={() => logoutWithRedirect()}>
+        <Button variant='outline' size='xl' onClick={() => logoutWithRedirect()}>
             Logout
         </Button>
     );
