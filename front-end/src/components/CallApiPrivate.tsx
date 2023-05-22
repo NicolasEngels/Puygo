@@ -1,8 +1,13 @@
 import { Button, Text, Box } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
+import config from "../config";
 
-function CallApiPrivate() {
+interface Props {
+    endPoint: string;
+}
+
+const CallApiPrivate: React.FC<Props> = ({ endPoint }) => {
 
     const [state, setState] = useState({
         status : null as null | number,
@@ -15,10 +20,11 @@ function CallApiPrivate() {
     } = useAuth0();
 
     const callApiPrivate = async () => {
+        console.log(config.REACT_APP_APPORIGIN)
         try {
             const token = await getAccessTokenSilently()
 
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/private` || '', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/${endPoint}` || '', {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -29,7 +35,7 @@ function CallApiPrivate() {
             setState({
                 ...state,
                 status : 200,
-                apiMessage: responseData.msg,
+                apiMessage: responseData,
             });
         } catch (error: any) {
             setState({
@@ -43,7 +49,9 @@ function CallApiPrivate() {
     return (
         <Box>
             <Button onClick={callApiPrivate}>call back-end - private</Button>
-            <Text>{state?.status}{state?.apiMessage}{state?.error}</Text>
+            {state.status !== null && (
+                <Text>{JSON.stringify(state)}</Text>
+            )}
         </Box>
     );
 }

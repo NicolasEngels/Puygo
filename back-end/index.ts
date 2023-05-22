@@ -1,21 +1,17 @@
 import express, { Request, Response } from 'express';
-import { auth } from "express-oauth2-jwt-bearer";
 import cors from "cors";
+import { checkJwt } from './checkJwt';
+import config from '../front-end/src/config';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: config.REACT_APP_APPORIGIN,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
-const checkJwt = auth({
-    audience: process.env.AUDIENCE || 'default_audience',
-    issuerBaseURL: `https://${process.env.DOMAIN}/`,
-});
 
 app.get('/', (req: Request, res: Response) => {
     res.send({ msg: "You are connected to the back-end! (home route)" });
@@ -26,10 +22,10 @@ app.get('/public', (req: Request, res: Response) => {
 });
 
 app.get('/private', checkJwt, (req: Request, res: Response) => {
-    res.send({ msg: " - You are connected to the back-end! (private route)" });
+    res.json({ msg: " - You are connected to the back-end! (private route)" });
 });
 
-const port = process.env.SERVER_PORT;
+const port = config.REACT_APP_SERVER_PORT;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

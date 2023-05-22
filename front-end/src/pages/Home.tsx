@@ -18,7 +18,7 @@ function Home() {
 
             <CallApiPublic />
 
-            <CallApiPrivate />
+            <CallApiPrivate endPoint="private"/>
 
             <Box>
                 {isAuthenticated ? (
