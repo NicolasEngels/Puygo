@@ -1,31 +1,25 @@
-import { useState } from 'react';
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import Home from "./pages/Home";
+import Loading from "./components/Loading";
 import './App.css';
 
 function App() {
-    const [backendMessage, setBackendMessage] = useState<any>(null);
 
-    const callApi = () => {
+    const { isLoading } = useAuth0();
 
-        fetch(process.env.REACT_APP_BACKEND_URL || '')
-            .then(response => response.json())
-            .then(data => {
-                setBackendMessage(data)
-            })
-            .catch(error => {
-                setBackendMessage(error);
-            });
+    if (isLoading) {
+        return <Loading />;
     }
 
     return (
         <Box className="App">
-            <Text>Hello World  - frontend</Text>
-            <Button onClick={callApi}>call back-end</Button>
-            {backendMessage && (
-                <Text>
-                    <span>{JSON.stringify(backendMessage, null, 2)}</span>
-                </Text>
-            )}
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" Component={Home} />
+                </Routes>
+            </BrowserRouter>
         </Box>
     );
 }
