@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from "cors";
 import { checkJwt } from './checkJwt';
-import config from '../front-end/src/config';
+import config from './config';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,7 +22,7 @@ app.get('/public', (req: Request, res: Response) => {
 });
 
 app.get('/private', checkJwt, (req: Request, res: Response) => {
-    res.json({ msg: " - You are connected to the back-end! (private route)" });
+    res.json({ msg: "You are connected to the back-end! (private route)" });
 });
 
 const port = config.REACT_APP_SERVER_PORT;

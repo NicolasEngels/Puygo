@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const checkJwt_1 = require("./checkJwt");
-const config_1 = __importDefault(require("../front-end/src/config"));
+const config_1 = __importDefault(require("./config"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -22,7 +22,7 @@ app.get('/public', (req, res) => {
     res.send({ msg: "You are connected to the back-end! (public route)" });
 });
 app.get('/private', checkJwt_1.checkJwt, (req, res) => {
-    res.json({ msg: " - You are connected to the back-end! (private route)" });
+    res.json({ msg: "You are connected to the back-end! (private route)" });
 });
 const port = config_1.default.REACT_APP_SERVER_PORT;
 app.listen(port, () => {
