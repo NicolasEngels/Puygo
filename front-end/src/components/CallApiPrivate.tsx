@@ -1,7 +1,6 @@
 import { Button, Text, Box } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
-import config from "../config";
 
 interface Props {
     endPoint: string;
@@ -20,7 +19,6 @@ const CallApiPrivate: React.FC<Props> = ({ endPoint }) => {
     } = useAuth0();
 
     const callApiPrivate = async () => {
-        console.log(config.REACT_APP_APPORIGIN)
         try {
             const token = await getAccessTokenSilently()
 

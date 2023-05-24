@@ -6,7 +6,6 @@ function CallApiPublic() {
     const [backendMessagePublic, setBackendMessagePublic] = useState<any>(null);
 
     const callApiPublic = () => {
-        console.log(process.env)
         fetch(`${process.env.REACT_APP_BACKEND_URL}/public` || '')
             .then(response => response.json())
             .then(data => {
