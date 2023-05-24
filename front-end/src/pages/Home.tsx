@@ -1,7 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Heading } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from '../components/LoginButton';
-import LogoutButton from '../components/LogoutButton';
 import CallApiPublic from '../components/CallApiPublic';
 import CallApiPrivate from '../components/CallApiPrivate';
 
@@ -14,7 +12,7 @@ function Home() {
 
     return (
         <Box className="App">
-            <Text>Hello World  - frontend</Text>
+            <Heading>Homepage</Heading>
 
             <CallApiPublic />
 
@@ -22,13 +20,9 @@ function Home() {
 
             <Box>
                 {isAuthenticated ? (
-                    <>
                         <Text>Hello {user?.name} you're Loged in !</Text>
-                        <Text>id : {user?.sub}</Text>
-                        <LogoutButton></LogoutButton>
-                    </>
                 ) : (
-                    <LoginButton />
+                        <Text>Hello Guest you're not Loged in !</Text>
                 )}
             </Box>
         </Box>
