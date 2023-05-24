@@ -1,4 +1,4 @@
-import { Box, VStack, Text, Button } from "@chakra-ui/react";
+import { Box, VStack, Button, Heading } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import LoginButton from "./LoginButton";
@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <Box bg="#EEE" h="100vh" w="250px" p="4">
             <VStack align="flex-start" spacing="4">
-                <Text fontWeight="bold">Puygo</Text>
+                <Heading fontWeight="bold">Puygo</Heading>
                 {isAuthenticated ? (
                     <>
                         <Button
