@@ -41,6 +41,18 @@ app.get('/getPosts/:id_User', async (req: Request, res: Response) => {
     getPostsById(req, res, id_User);
 });
 
+app.get('/', (req: Request, res: Response) => {
+    res.send({ msg: "You are connected to the back-end! (home route)" });
+});
+
+app.get('/public', (req: Request, res: Response) => {
+    res.send({ msg: "You are connected to the back-end! (public route)" });
+});
+
+app.get('/private', checkJwt, (req: Request, res: Response) => {
+    res.json({ msg: "You are connected to the back-end! (private route)" });
+});
+
 const port = process.env.SERVER_PORT;
 
 app.listen(port, () => {
