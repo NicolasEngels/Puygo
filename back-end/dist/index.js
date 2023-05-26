@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const checkJwt_1 = require("./custom-modules/checkJwt");
+const checkJwt_1 = require("./checkJwt");
 const connectToDatabase_1 = __importDefault(require("./connectToDatabase"));
 const postNewTag_1 = __importDefault(require("./postNewTag"));
 const postNewPost_1 = __importDefault(require("./postNewPost"));

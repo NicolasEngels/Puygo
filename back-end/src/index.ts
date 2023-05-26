@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from "cors";
-import { checkJwt } from './custom-modules/checkJwt';
+import { checkJwt } from './checkJwt';
 import connectToDatabase from './connectToDatabase';
 import postNewTag from './postNewTag';
 import postNewPost from './postNewPost';
