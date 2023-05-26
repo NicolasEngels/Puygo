@@ -1,5 +1,6 @@
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Stack, Text, Heading } from "@chakra-ui/react";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import HappinessFormModal from "../components/HappinessModal";
 import Loading from "../components/Loading";
 
 function Profile() {
@@ -7,11 +8,13 @@ function Profile() {
     const { user } = useAuth0();
 
     return (
-        <Box className="App">
+        <Stack className="App">
             <Heading>Profile</Heading>
             <Text>Hello {user?.name}. Welcome in your profile page</Text>
             <Text>id : {user?.sub}</Text>
-        </Box>
+
+            <HappinessFormModal />
+        </Stack>
     );
 }
 

@@ -1,14 +1,18 @@
 import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { Stack } from "@chakra-ui/react";
+import HappinessFormModal from "../components/HappinessModal";
 
 
 export const Graphics = () => {
     const { user } = useAuth0()
 
     return (
-        <div id="graphics">
+        <Stack id="graphics">
             <h1>Graphics of {user?.name}</h1>
-        </div>
+
+            <HappinessFormModal />
+        </Stack>
     );
 };
 
