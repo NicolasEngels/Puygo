@@ -8,7 +8,7 @@ const Navbar = () => {
     const { isAuthenticated } = useAuth0();
 
     return (
-        <Box bg="#EEE" h="100vh" w="250px" p="4">
+        <Box bg="#EEE" position="fixed" h="100vh" w="250px" p="4" boxSizing='border-box'>
             <VStack align="flex-start" spacing="4">
                 <Heading fontWeight="bold">Puygo</Heading>
                 {isAuthenticated ? (

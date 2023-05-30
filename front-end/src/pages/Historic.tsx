@@ -8,7 +8,7 @@ export const Historic = () => {
     const { user } = useAuth0()
 
     return (
-        <Stack id="Historic">
+        <Stack id="Historic" ml="250px">
             <h1>Historic of {user?.name}</h1>
 
             <HappinessFormModal />

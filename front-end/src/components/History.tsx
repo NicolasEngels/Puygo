@@ -40,16 +40,16 @@ function History() {
                         <Heading>happinessIndex</Heading>
                         <Text>{post.happinessIndex}</Text>
 
-                        <Heading>description</Heading>
-                        <Text>{post.description}</Text>
-
                         <Heading>activities</Heading>
-                        {post.activities.map((tag, indexActivity)=>(
+                        {post.activities.map((tag, indexActivity) => (
                             <Text key={indexActivity} borderRadius='5px' bg='#CCC'>{tag.name}</Text>
                         ))}
 
+                        <Heading>description</Heading>
+                        <Text>{post.description}</Text>
+
                         <Heading>date</Heading>
-                        <Text>{post.date.toString()}</Text>
+                        <Text>{new Date(post.date).toLocaleDateString()} - {new Date(post.date).toLocaleTimeString()}</Text>
                     </Box>
                 ))}
             </Stack>

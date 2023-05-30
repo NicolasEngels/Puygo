@@ -10,7 +10,7 @@ function Home() {
     } = useAuth0();
 
     return (
-        <Box className="App">
+        <Box className="App" ml="250px">
             <Heading>Homepage</Heading>
 
             <CallApiPrivate endPoint="private"/>

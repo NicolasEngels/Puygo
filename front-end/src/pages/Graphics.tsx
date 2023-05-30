@@ -8,7 +8,7 @@ export const Graphics = () => {
     const { user } = useAuth0()
 
     return (
-        <Stack id="graphics">
+        <Stack id="graphics" ml="250px">
             <h1>Graphics of {user?.name}</h1>
 
             <HappinessFormModal />
