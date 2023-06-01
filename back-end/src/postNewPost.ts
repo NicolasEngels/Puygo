@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Post, { IPost } from './Post';
+import Post from './Post';
 
 const postNewPost = async (req: Request, res: Response, id_User: string) => {
 

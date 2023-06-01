@@ -20,6 +20,7 @@ const postNewTag_1 = __importDefault(require("./postNewTag"));
 const postNewPost_1 = __importDefault(require("./postNewPost"));
 const getTagsById_1 = __importDefault(require("./getTagsById"));
 const getPostsByid_1 = __importDefault(require("./getPostsByid"));
+const deletePost_1 = __importDefault(require("./deletePost"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -45,6 +46,10 @@ app.post('/postNewPost/:id_User', (req, res) => __awaiter(void 0, void 0, void 0
 app.get('/getPosts/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, getPostsByid_1.default)(req, res, id_User);
+}));
+app.delete('/deletePost/:id_Post', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id_Post = req.params.id_Post;
+    (0, deletePost_1.default)(req, res, id_Post);
 }));
 app.get('/', (req, res) => {
     res.send({ msg: "Server running" });

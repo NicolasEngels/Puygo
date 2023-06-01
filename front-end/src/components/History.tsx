@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Stack, Card, Text, Tag , Flex } from "@chakra-ui/react";
+import { Stack, Card, Text, Tag , Flex, IconButton } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Tag as Activities } from "./HappinessForm";
 
@@ -34,6 +35,20 @@ function History() {
     const optionsDay = { day: 'numeric', month: 'numeric' } as const;
     const optionsTime = { hour: 'numeric', minute: 'numeric' } as const;
 
+    const deletePost = async (post: any) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/deletePost/${post?._id}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error('La suppression du post a échoué.');
+            }
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <Stack>
             <Flex w={"100%"} flexDir={'column'}>
@@ -44,7 +59,7 @@ function History() {
                             <Text fontSize='sm'>{new Date(post.date).toLocaleTimeString(undefined, optionsTime)}</Text>
                         </Flex>
 
-                        <Card key={indexPost} variant={'filled'} w={'90%'} border={'solid 2px #DAE7F3'}>
+                        <Card id={`${indexPost}`} key={indexPost} variant={'filled'} w={'90%'} border={'solid 2px #DAE7F3'}>
                             <Flex justifyContent={'start'}>
                                 <Flex borderRight={'solid 2px #DAE7F3'} p={'1%'} justifyContent={'center'} alignItems={'center'} w={'22%'} maxW={'180px'} minW={'130px'}>
                                     <Text fontSize='300%' textAlign={'center'} color={'gray.700'}>{post.happinessIndex}%</Text>
@@ -66,6 +81,8 @@ function History() {
                                     </Stack>
                                 </Stack>
                             </Flex>
+
+                            <IconButton onClick={() => deletePost(post)} aria-label='DeleteIcon' icon={<DeleteIcon />} position={'absolute'} right={'0'}></IconButton>
                         </Card>
                     </Flex>
                 ))}

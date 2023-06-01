@@ -6,6 +6,7 @@ import postNewTag from './postNewTag';
 import postNewPost from './postNewPost';
 import getTagsById from './getTagsById';
 import getPostsById from './getPostsByid';
+import deletePostById from './deletePost';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -39,6 +40,11 @@ app.post('/postNewPost/:id_User', async (req: Request, res: Response) => {
 app.get('/getPosts/:id_User', async (req: Request, res: Response) => {
     const id_User = req.params.id_User;
     getPostsById(req, res, id_User);
+});
+
+app.delete('/deletePost/:id_Post', async (req: Request, res: Response) => {
+    const id_Post = req.params.id_Post;
+    deletePostById(req, res, id_Post);
 });
 
 app.get('/', (req: Request, res: Response) => {

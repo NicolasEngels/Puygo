@@ -13,14 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Post_1 = __importDefault(require("./Post"));
-const getPostsById = (req, res, id_User) => __awaiter(void 0, void 0, void 0, function* () {
+const deletePostById = (req, res, id_Post) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const tags = yield Post_1.default.find({ id_User: id_User }).exec();
-        res.json(tags);
+        const postToDelete = yield Post_1.default.findOneAndDelete({ _id: id_Post }).exec();
+        res.send(`${postToDelete} is deleted`);
     }
     catch (error) {
         console.error('Erreur lors de la récupération des Posts:', error);
-        res.status(500).json({ message: 'Erreur lors de la récupération des tags' });
+        res.status(500).json({ message: 'Erreur lors de la récupération du post' });
     }
 });
-exports.default = getPostsById;
+exports.default = deletePostById;
