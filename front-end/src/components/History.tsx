@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Stack, Heading, Box, Text } from "@chakra-ui/react";
+import { Stack, Card, Text, Tag , Flex } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Tag } from "./HappinessForm";
+import { Tag as Activities } from "./HappinessForm";
 
 interface FormValues {
     happinessIndex: number;
-    activities: Tag[];
+    activities: Activities[];
     date: Date;
     description: string;
     id_User: string;
@@ -22,7 +22,7 @@ function History() {
             try {
                 const posts = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getPosts/${user?.sub}`)
                 const postsData = await posts.json();
-                setPosts(postsData)
+                setPosts(postsData.reverse())
             } catch (error) {
                 console.log(error)
             }
@@ -31,28 +31,45 @@ function History() {
         call();
     }, [user?.sub]);
 
+    const optionsDay = { day: 'numeric', month: 'numeric' } as const;
+    const optionsTime = { hour: 'numeric', minute: 'numeric' } as const;
+
     return (
         <Stack>
-            <Heading>Ancient Posts</Heading>
-            <Stack>
+            <Flex w={"100%"} flexDir={'column'}>
                 {Posts.map((post, indexPost)=>(
-                    <Box key={indexPost} border="solid 2px black" borderRadius='5px' w='90%' >
-                        <Heading>happinessIndex</Heading>
-                        <Text>{post.happinessIndex}</Text>
+                    <Flex w={"95%"} maxW={'1080px'} m={'.5rem auto'}>
+                        <Flex flexDir={'column'} w={'10%'} justifyContent={'center'} alignItems={'center'}>
+                            <Text fontSize='sm'>{new Date(post.date).toLocaleDateString(undefined, optionsDay)}</Text> 
+                            <Text fontSize='sm'>{new Date(post.date).toLocaleTimeString(undefined, optionsTime)}</Text>
+                        </Flex>
 
-                        <Heading>activities</Heading>
-                        {post.activities.map((tag, indexActivity) => (
-                            <Text key={indexActivity} borderRadius='5px' bg='#CCC'>{tag.name}</Text>
-                        ))}
+                        <Card key={indexPost} variant={'filled'} w={'90%'} border={'solid 2px #DAE7F3'}>
+                            <Flex justifyContent={'start'}>
+                                <Flex borderRight={'solid 2px #DAE7F3'} p={'1%'} justifyContent={'center'} alignItems={'center'} w={'22%'} maxW={'180px'} minW={'130px'}>
+                                    <Text fontSize='300%' textAlign={'center'} color={'gray.700'}>{post.happinessIndex}%</Text>
+                                </Flex>
 
-                        <Heading>description</Heading>
-                        <Text>{post.description}</Text>
+                                <Stack w={'60%'}>
+                                    <Stack h={'auto'}>
+                                        <Text fontSize='xs' m={'5px 0 0 5px'}>Activities : </Text>
+                                        <Flex flexWrap={'wrap'} p={'0 10px'}>
+                                            {post.activities.map((tag, indexActivity) => (
+                                                <Tag key={indexActivity} m={'5px'} colorScheme='blue'>{tag.name}</Tag >
+                                            ))}
+                                        </Flex>
+                                    </Stack>
 
-                        <Heading>date</Heading>
-                        <Text>{new Date(post.date).toLocaleDateString()} - {new Date(post.date).toLocaleTimeString()}</Text>
-                    </Box>
+                                    <Stack h={'auto'}>
+                                        <Text fontSize='xs' m={'5px 0 0 5px'}>Description : </Text>
+                                        <Text fontSize='sm' p={'0 0 10px 10px'}>{post.description}</Text>
+                                    </Stack>
+                                </Stack>
+                            </Flex>
+                        </Card>
+                    </Flex>
                 ))}
-            </Stack>
+            </Flex>
         </Stack>
     );
 }

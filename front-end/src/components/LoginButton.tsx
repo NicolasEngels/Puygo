@@ -8,7 +8,7 @@ function LoginButton() {
     } = useAuth0();
 
     return (
-        <Button variant='solid' onClick={() => loginWithRedirect({})}>
+        <Button onClick={() => loginWithRedirect({})} w={'65%'} m={'.2rem auto'}>
             Login
         </Button>
     );

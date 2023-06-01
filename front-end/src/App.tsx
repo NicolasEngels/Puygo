@@ -19,9 +19,9 @@ function App() {
     }
 
     return (
-        <Box className="App">
+        <Box className="App" backgroundColor='#F6F7F9'>
             <BrowserRouter >
-                <Box display='flex'>
+                <Box display='flex' backgroundColor='#F6F7F9'>
                     <Navbar />
 
                     <Routes>

@@ -42,11 +42,7 @@ app.get('/getPosts/:id_User', async (req: Request, res: Response) => {
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.send({ msg: "You are connected to the back-end! (home route)" });
-});
-
-app.get('/public', (req: Request, res: Response) => {
-    res.send({ msg: "You are connected to the back-end! (public route)" });
+    res.send({ msg: "Server running" });
 });
 
 app.get('/private', checkJwt, (req: Request, res: Response) => {

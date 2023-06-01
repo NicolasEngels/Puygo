@@ -7,7 +7,7 @@ export const Statistics = () => {
     const { user } = useAuth0()
 
     return (
-        <Stack id="Statistics" ml="250px">
+        <Stack id="Statistics" ml="250px" w="100%">
             <h1>Statistics of {user?.name}</h1>
 
             <HappinessFormModal />

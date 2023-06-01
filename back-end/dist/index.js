@@ -47,10 +47,7 @@ app.get('/getPosts/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, fu
     (0, getPostsByid_1.default)(req, res, id_User);
 }));
 app.get('/', (req, res) => {
-    res.send({ msg: "You are connected to the back-end! (home route)" });
-});
-app.get('/public', (req, res) => {
-    res.send({ msg: "You are connected to the back-end! (public route)" });
+    res.send({ msg: "Server running" });
 });
 app.get('/private', checkJwt_1.checkJwt, (req, res) => {
     res.json({ msg: "You are connected to the back-end! (private route)" });

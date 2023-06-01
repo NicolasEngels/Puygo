@@ -8,7 +8,7 @@ function Profile() {
     const { user } = useAuth0();
 
     return (
-        <Stack className="App" ml="250px">
+        <Stack className="App" ml="250px" w="100%">
             <Heading>Profile</Heading>
             <Text>Hello {user?.name}. Welcome in your profile page</Text>
             <Text>id : {user?.sub}</Text>
