@@ -133,7 +133,7 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
             <Stack m={'2.5rem 1rem'}>
                 <Text fontSize='xl' as={'b'} mb={'.5rem'}>Activities : </Text>
                 <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
-                    {initialItems.map((tag: Tag) => (
+                    {initialItems && initialItems.map((tag: Tag) => (
                         <Stack key={tag._id} w={'33%'}>
                             <Checkbox value={tag.name} {...register("activities")} size={'md'} >{tag.name}</Checkbox>
                                 {/* {tag.name} */}
