@@ -7,10 +7,6 @@ import LogoutButton from "./LogoutButton";
 const Navbar = () => {
     const { isAuthenticated } = useAuth0();
 
-    const manageActive = () => {
-        console.log('hello')
-    }
-
     return (
         <Box bg={'gray.100'} position="fixed" h="100vh" w="250px" boxSizing='border-box' borderRight={'solid 2px #DAE7F3'}>
             <Stack align="flex-start" spacing="4">
@@ -23,7 +19,6 @@ const Navbar = () => {
                             variant='solid'
                             w={'65%'} 
                             m={'.2rem auto'}
-                            onClick={manageActive}
                         >
                             Graphics
                         </Button>
