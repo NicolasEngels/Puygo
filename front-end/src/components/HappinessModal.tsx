@@ -34,7 +34,6 @@ const HappinessModal = () => {
 
     const onSubmit = async (data: FormValues) => {
         const token = await getAccessTokenSilently()
-        console.log(data)
 
         const postData = {
             ...data,
