@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Stack, Flex } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
@@ -14,7 +14,7 @@ const Navbar = () => {
                 {isAuthenticated ? (
                     <Flex w={'100%'} flexDir={'column'}>
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/graphics"
                             variant='solid'
                             w={'65%'} 
@@ -24,7 +24,7 @@ const Navbar = () => {
                         </Button>
 
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/statistics"
                             variant='solid'
                             w={'65%'}
@@ -34,7 +34,7 @@ const Navbar = () => {
                         </Button>
 
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/historic"
                             variant='solid'
                             w={'65%'}
@@ -44,7 +44,7 @@ const Navbar = () => {
                         </Button>
 
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/"
                             variant='solid'
                             w={'65%'}
@@ -54,7 +54,7 @@ const Navbar = () => {
                         </Button>
 
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/profile"
                             variant='solid'
                             w={'65%'}
@@ -68,7 +68,7 @@ const Navbar = () => {
                 ) : (
                     <Flex w={'100%'} flexDir={'column'}>
                         <Button
-                            as={RouterNavLink}
+                            as={NavLink}
                             to="/"
                                 variant='solid'
                                 w={'65%'}
