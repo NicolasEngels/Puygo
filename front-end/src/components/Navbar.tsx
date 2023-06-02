@@ -1,6 +1,6 @@
-import { Box, Heading, Stack, Flex } from "@chakra-ui/react";
+import { Box, Button, Heading, Stack, Flex } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
@@ -13,41 +13,69 @@ const Navbar = () => {
                 <Heading fontWeight="bold" w={"100%"} textAlign={'center'} bgColor={'white'} p={'1rem 0'} color={"blue.400"} borderBottom={'solid 2px #DAE7F3'}>Puygo</Heading>
                 {isAuthenticated ? (
                     <Flex w={'100%'} flexDir={'column'}>
-                        <NavLink
+                        <Button
+                            as={RouterNavLink}
                             to="/graphics"
+                            variant='solid'
+                            w={'65%'} 
+                            m={'.2rem auto'}
                         >
                             Graphics
-                        </NavLink>
+                        </Button>
 
-                        <NavLink
+                        <Button
+                            as={RouterNavLink}
                             to="/statistics"
+                            variant='solid'
+                            w={'65%'}
+                            m={'.2rem auto'}
                         >
                             Statistics
-                        </NavLink>
+                        </Button>
 
-                        <NavLink
+                        <Button
+                            as={RouterNavLink}
                             to="/historic"
+                            variant='solid'
+                            w={'65%'}
+                            m={'.2rem auto'}
                         >
                             Historic
-                        </NavLink>
+                        </Button>
 
-                        <NavLink
+                        <Button
+                            as={RouterNavLink}
                             to="/"
+                            variant='solid'
+                            w={'65%'}
+                            m={'.2rem auto'}
                         >
                             Home
-                        </NavLink>
+                        </Button>
 
-                        <NavLink
+                        <Button
+                            as={RouterNavLink}
                             to="/profile"
+                            variant='solid'
+                            w={'65%'}
+                            m={'.2rem auto'}
                         >
                             Profile
-                        </NavLink>
+                        </Button>
 
                         <LogoutButton />
                     </Flex>
                 ) : (
                     <Flex w={'100%'} flexDir={'column'}>
-                            <NavLink to="/">Home</NavLink>
+                        <Button
+                            as={RouterNavLink}
+                            to="/"
+                                variant='solid'
+                                w={'65%'}
+                                m={'.2rem auto'}
+                        >
+                            Home
+                        </Button>
                         
                         <LoginButton />
                     </Flex>
