@@ -19,13 +19,13 @@ function App() {
     }
 
     return (
-        <Box className="App" backgroundColor='#F6F7F9'>
+        <Box className="App">
             <BrowserRouter >
-                <Box display='flex' backgroundColor='#F6F7F9'>
+                <Box display='flex' bgColor='#F6F7F9' h={'100vh'}>
                     <Navbar />
 
                     <Routes>
-                        <Route path="/Home" Component={Home} />
+                        <Route path="/" Component={Home} />
                         <Route path="/graphics" Component={Graphics} />
                         <Route path="/statistics" Component={Statistics} />
                         <Route path="/historic" Component={Historic} />
