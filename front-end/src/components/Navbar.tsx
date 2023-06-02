@@ -1,6 +1,6 @@
 import { Box, Heading, Stack, Flex } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
@@ -13,41 +13,41 @@ const Navbar = () => {
                 <Heading fontWeight="bold" w={"100%"} textAlign={'center'} bgColor={'white'} p={'1rem 0'} color={"blue.400"} borderBottom={'solid 2px #DAE7F3'}>Puygo</Heading>
                 {isAuthenticated ? (
                     <Flex w={'100%'} flexDir={'column'}>
-                        <Link
+                        <NavLink
                             to="/graphics"
                         >
                             Graphics
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/statistics"
                         >
                             Statistics
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/historic"
                         >
                             Historic
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/"
                         >
                             Home
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/profile"
                         >
                             Profile
-                        </Link>
+                        </NavLink>
 
                         <LogoutButton />
                     </Flex>
                 ) : (
                     <Flex w={'100%'} flexDir={'column'}>
-                            <Link to="/">Home</Link>
+                            <NavLink to="/">Home</NavLink>
                         
                         <LoginButton />
                     </Flex>
