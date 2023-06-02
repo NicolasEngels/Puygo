@@ -35,10 +35,20 @@ const HappinessModal = () => {
     const onSubmit = async (data: FormValues) => {
         const token = await getAccessTokenSilently()
         console.log(data)
-        addPost(data, token);
-        reset();
-        onClose();
-        window.location.reload();
+
+        const postData = {
+            ...data,
+            happinessIndex: data.happinessIndex === null ? 50 : data.happinessIndex,
+        };
+
+        try {
+            await addPost(postData, token);
+            reset();
+            onClose();
+            window.location.reload();
+        } catch (error) {
+            console.log('Error:', error);
+        }
     };
 
     return (

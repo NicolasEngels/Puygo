@@ -87,12 +87,15 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString();
 
+    const [sliderValue, setSliderValue] = useState(50)
+
     const handleSliderChange = (value: number) => {
         setSliderValue(value)
-        setValue("happinessIndex", value);
     };
 
-    const [sliderValue, setSliderValue] = useState(50)
+    useEffect(() => {
+        setValue("happinessIndex", sliderValue);
+    });
 
     const labelStyles = {
         mt: '2',
