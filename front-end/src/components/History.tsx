@@ -54,7 +54,7 @@ function History() {
             if (!response.ok) {
                 throw new Error('La suppression du post a échoué.');
             }
-            // window.location.reload();
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
