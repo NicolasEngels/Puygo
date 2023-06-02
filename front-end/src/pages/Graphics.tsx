@@ -1,10 +1,10 @@
-import Loading from "../components/Loading";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+// import Loading from "../components/Loading";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Stack } from "@chakra-ui/react";
 import HappinessFormModal from "../components/HappinessModal";
 
 
-export const Graphics = () => {
+const Graphics = () => {
     const { user } = useAuth0()
 
     return (
@@ -16,6 +16,8 @@ export const Graphics = () => {
     );
 };
 
-export default withAuthenticationRequired(Graphics, {
-    onRedirecting: () => <Loading />,
-});
+// export default withAuthenticationRequired(Graphics, {
+//     onRedirecting: () => <Loading />,
+// });
+
+export default Graphics

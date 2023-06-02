@@ -3,7 +3,7 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import HappinessFormModal from "../components/HappinessModal";
 import Loading from "../components/Loading";
 
-function Profile() {
+const Profile = () => {
 
     const { user } = useAuth0();
 

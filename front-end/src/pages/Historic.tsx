@@ -4,7 +4,7 @@ import { Stack } from "@chakra-ui/react";
 import HappinessFormModal from "../components/HappinessModal";
 import History from "../components/History";
 
-export const Historic = () => {
+const Historic = () => {
 
     return (
         <Stack id="Historic" ml="250px" mt="60px" w="100%">

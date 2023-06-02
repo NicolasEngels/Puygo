@@ -3,7 +3,7 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { Stack  } from "@chakra-ui/react";
 import HappinessFormModal from "../components/HappinessModal";
 
-export const Statistics = () => {
+const Statistics = () => {
     const { user } = useAuth0()
 
     return (

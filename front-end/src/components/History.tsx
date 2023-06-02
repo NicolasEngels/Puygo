@@ -66,8 +66,8 @@ function History() {
                 {Posts.map((post, indexPost)=>(
                     <Flex key={indexPost} w={"95%"} maxW={'1080px'} m={'.5rem auto'}>
                         <Flex flexDir={'column'} w={'10%'} justifyContent={'center'} alignItems={'center'}>
-                            <Text fontSize='sm'>{new Date(post.date).toLocaleDateString(undefined, optionsDay)}</Text> 
-                            <Text fontSize='sm'>{new Date(post.date).toLocaleTimeString(undefined, optionsTime)}</Text>
+                            <Text fontSize='sm' letterSpacing={'wider'}>{new Date(post.date).toLocaleDateString(undefined, optionsDay)}</Text> 
+                            <Text fontSize='xs'>{new Date(post.date).toLocaleTimeString(undefined, optionsTime)}</Text>
                         </Flex>
 
                         <Card id={`${indexPost}`} key={indexPost} variant={'filled'} w={'90%'} border={'solid 2px #DAE7F3'}>
