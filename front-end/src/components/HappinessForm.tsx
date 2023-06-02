@@ -51,25 +51,27 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
 
     const [initialItems, setInitialItems] = useState<Tag[]>([]);
 
-    const fetchActivities = async () => {
-        try {
-            const token = await getAccessTokenSilently()
-
-            const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            })
-            const activitiesData = await activities.json();
-            setInitialItems(activitiesData)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    
 
     useEffect(() => {
-        fetchActivities(); 
-    });
+        const fetchActivities = async () => {
+            try {
+                const token = await getAccessTokenSilently()
+
+                const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+                const activitiesData = await activities.json();
+                setInitialItems(activitiesData)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchActivities()
+    }, [user?.sub, getAccessTokenSilently]);
 
     const addTag = async() => {
         const inputElement = document.getElementById('newActivity') as HTMLInputElement
@@ -151,7 +153,7 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
                     <InputGroup size='md' mt={'1rem'}>
                         <Input id='newActivity' placeholder='Enter a new Tag' />
                         <InputRightElement w={'15%'}>
-                            <Button onClick={addTag} h='1.75rem' size='sm' mr={'.45rem'} colorScheme={'blue'}>add Tag</Button>
+                            <Button onClick={addTag} h='1.75rem' size='sm' mr={'.45rem'} colorScheme={'blue'} p={'1rem'}>add Tag</Button>
                         </InputRightElement>
                     </InputGroup>
                 </Flex>
