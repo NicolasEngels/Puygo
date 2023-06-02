@@ -20,7 +20,7 @@ const getPostsById = (req, res, id_User) => __awaiter(void 0, void 0, void 0, fu
     }
     catch (error) {
         console.error('Erreur lors de la récupération des Posts:', error);
-        res.status(500).json({ message: 'Erreur lors de la récupération des tags' });
+        res.status(500).json({ message: 'Erreur lors de la récupération des posts' });
     }
 });
 exports.default = getPostsById;
