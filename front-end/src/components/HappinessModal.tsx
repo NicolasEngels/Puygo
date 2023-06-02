@@ -34,7 +34,7 @@ const HappinessModal = () => {
         addPost(data);
         reset();
         onClose();
-        window.location.reload();
+        // window.location.reload();
     };
 
     return (
