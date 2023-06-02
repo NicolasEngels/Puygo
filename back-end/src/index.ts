@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import path from 'path'
 import cors from "cors";
 import { checkJwt } from './checkJwt';
 import connectToDatabase from './connectToDatabase';
@@ -21,6 +22,10 @@ app.use(cors({
 app.use(express.json())
 
 connectToDatabase();
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../front-end/public/index.html'));
+});
 
 app.post('/postNewTag/:id_User', checkJwt, async(req: Request, res: Response) => {
     const id_User = req.params.id_User;

@@ -25,8 +25,8 @@ function App() {
                     <Navbar />
 
                     <Routes>
-                        <Route path="/Home" Component={Home} />
-                        <Route path="/" Component={Graphics} />
+                        <Route path="/" Component={Home} />
+                        <Route path="/graphics" Component={Graphics} />
                         <Route path="/statistics" Component={Statistics} />
                         <Route path="/historic" Component={Historic} />
                         <Route path="/profile" Component={Profile} />

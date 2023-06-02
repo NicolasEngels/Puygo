@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
 const checkJwt_1 = require("./checkJwt");
 const connectToDatabase_1 = __importDefault(require("./connectToDatabase"));
@@ -31,6 +32,9 @@ app.use((0, cors_1.default)({
 }));
 app.use(express_1.default.json());
 (0, connectToDatabase_1.default)();
+app.get('/', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../../front-end/public/index.html'));
+});
 app.post('/postNewTag/:id_User', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, postNewTag_1.default)(req, res, id_User);
