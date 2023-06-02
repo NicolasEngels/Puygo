@@ -22,27 +22,27 @@ app.use(express.json())
 
 connectToDatabase();
 
-app.post('/postNewTag/:id_User', async(req: Request, res: Response) => {
+app.post('/postNewTag/:id_User', checkJwt, async(req: Request, res: Response) => {
     const id_User = req.params.id_User;
     postNewTag(req, res, id_User);
 });
 
-app.get('/getTags/:id_User', async (req: Request, res: Response) => {
+app.get('/getTags/:id_User', checkJwt, async (req: Request, res: Response) => {
     const id_User = req.params.id_User;
     getTagsById(req, res, id_User);
 });
 
-app.post('/postNewPost/:id_User', async (req: Request, res: Response) => {
+app.post('/postNewPost/:id_User', checkJwt, async (req: Request, res: Response) => {
     const id_User = req.params.id_User;
     postNewPost(req, res, id_User);
 });
 
-app.get('/getPosts/:id_User', async (req: Request, res: Response) => {
+app.get('/getPosts/:id_User', checkJwt, async (req: Request, res: Response) => {
     const id_User = req.params.id_User;
     getPostsById(req, res, id_User);
 });
 
-app.delete('/deletePost/:id_Post', async (req: Request, res: Response) => {
+app.delete('/deletePost/:id_Post', checkJwt, async (req: Request, res: Response) => {
     const id_Post = req.params.id_Post;
     deletePostById(req, res, id_Post);
 });

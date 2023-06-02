@@ -41,7 +41,7 @@ type FormComponentProps = {
 
 const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponentProps) => {
 
-    const { user } = useAuth0()
+    const { user, getAccessTokenSilently } = useAuth0()
 
     const { 
         register, 
@@ -53,7 +53,13 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
 
     const fetchActivities = async () => {
         try {
-            const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`)
+            const token = await getAccessTokenSilently()
+
+            const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
             const activitiesData = await activities.json();
             setInitialItems(activitiesData)
         } catch (error) {
@@ -69,8 +75,9 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
         const inputElement = document.getElementById('newActivity') as HTMLInputElement
         const inputValue = inputElement.value
         const id_User = user?.sub || ''
+        const token = await getAccessTokenSilently()
 
-        addActivities(inputValue, id_User)
+        addActivities(inputValue, id_User, token)
 
         inputElement.value = ''
     }

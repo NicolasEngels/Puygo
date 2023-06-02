@@ -31,23 +31,23 @@ app.use((0, cors_1.default)({
 }));
 app.use(express_1.default.json());
 (0, connectToDatabase_1.default)();
-app.post('/postNewTag/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('/postNewTag/:id_User', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, postNewTag_1.default)(req, res, id_User);
 }));
-app.get('/getTags/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/getTags/:id_User', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, getTagsById_1.default)(req, res, id_User);
 }));
-app.post('/postNewPost/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('/postNewPost/:id_User', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, postNewPost_1.default)(req, res, id_User);
 }));
-app.get('/getPosts/:id_User', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/getPosts/:id_User', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_User = req.params.id_User;
     (0, getPostsByid_1.default)(req, res, id_User);
 }));
-app.delete('/deletePost/:id_Post', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.delete('/deletePost/:id_Post', checkJwt_1.checkJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_Post = req.params.id_Post;
     (0, deletePost_1.default)(req, res, id_Post);
 }));

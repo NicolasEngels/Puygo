@@ -1,4 +1,4 @@
-const addActivities = async (inputValue: string, id_User: string) => {
+const addActivities = async (inputValue: string, id_User: string, token: string) => {
     const data = {
         "name": inputValue,
         "id_User": id_User
@@ -8,6 +8,7 @@ const addActivities = async (inputValue: string, id_User: string) => {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/postNewTag/${id_User}`, {
             method: 'POST',
             headers: {
+                Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)

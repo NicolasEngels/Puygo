@@ -9,7 +9,7 @@ type FormValues = {
 };
 
 
-const addPost = async (data: FormValues) => {
+const addPost = async (data: FormValues, token: string) => {
     
     let activityList: Array<{ name: Tag, id_User: string }> = []; // Déclarer une liste vide par défaut
 
@@ -32,6 +32,7 @@ const addPost = async (data: FormValues) => {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/postNewPost/${data.id_User}`, {
             method: 'POST',
             headers: {
+                Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(post)

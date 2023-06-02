@@ -14,14 +14,20 @@ interface FormValues {
 
 function History() {
 
-    const { user } = useAuth0()
+    const { user, getAccessTokenSilently } = useAuth0()
 
     const [Posts, setPosts] = useState<FormValues[]>([]);
 
     useEffect(() => {
         const call = async () => {
             try {
-                const posts = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getPosts/${user?.sub}`)
+                const token = await getAccessTokenSilently()
+
+                const posts = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getPosts/${user?.sub}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
                 const postsData = await posts.json();
                 setPosts(postsData.reverse())
             } catch (error) {
@@ -30,15 +36,20 @@ function History() {
         }
 
         call();
-    }, [user?.sub]);
+    }, [user?.sub,getAccessTokenSilently]);
 
     const optionsDay = { day: 'numeric', month: 'numeric' } as const;
     const optionsTime = { hour: 'numeric', minute: 'numeric' } as const;
 
     const deletePost = async (post: any) => {
         try {
+            const token = await getAccessTokenSilently()
+
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/deletePost/${post?._id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
             if (!response.ok) {
                 throw new Error('La suppression du post a échoué.');
@@ -53,7 +64,7 @@ function History() {
         <Stack>
             <Flex w={"100%"} flexDir={'column'}>
                 {Posts.map((post, indexPost)=>(
-                    <Flex w={"95%"} maxW={'1080px'} m={'.5rem auto'}>
+                    <Flex key={indexPost} w={"95%"} maxW={'1080px'} m={'.5rem auto'}>
                         <Flex flexDir={'column'} w={'10%'} justifyContent={'center'} alignItems={'center'}>
                             <Text fontSize='sm'>{new Date(post.date).toLocaleDateString(undefined, optionsDay)}</Text> 
                             <Text fontSize='sm'>{new Date(post.date).toLocaleTimeString(undefined, optionsTime)}</Text>

@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { Tag } from "./HappinessForm";
 import addPost from "../utils/addPost";
 import { AddIcon } from "@chakra-ui/icons";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type FormValues = {
     happinessIndex: number;
@@ -29,9 +30,12 @@ const HappinessModal = () => {
 
     const { reset } = useForm<FormValues>();
 
-    const onSubmit = (data: FormValues) => {
+    const { getAccessTokenSilently } = useAuth0()
+
+    const onSubmit = async (data: FormValues) => {
+        const token = await getAccessTokenSilently()
         console.log(data)
-        addPost(data);
+        addPost(data, token);
         reset();
         onClose();
         // window.location.reload();
