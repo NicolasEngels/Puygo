@@ -51,27 +51,25 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
 
     const [initialItems, setInitialItems] = useState<Tag[]>([]);
 
-    
+    const fetchActivities = async () => {
+        try {
+            const token = await getAccessTokenSilently()
+
+            const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            const activitiesData = await activities.json();
+            setInitialItems(activitiesData)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
-        const fetchActivities = async () => {
-            try {
-                const token = await getAccessTokenSilently()
-
-                const activities = await fetch(`${process.env.REACT_APP_BACKEND_URL}/getTags/${user?.sub}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    }
-                })
-                const activitiesData = await activities.json();
-                setInitialItems(activitiesData)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
         fetchActivities()
-    }, [user?.sub, getAccessTokenSilently]);
+    });
 
     const addTag = async() => {
         const inputElement = document.getElementById('newActivity') as HTMLInputElement
@@ -82,6 +80,7 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
         addActivities(inputValue, id_User, token)
 
         inputElement.value = ''
+        fetchActivities()
     }
 
     const currentDate = new Date();
