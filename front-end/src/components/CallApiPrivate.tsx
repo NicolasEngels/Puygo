@@ -47,6 +47,7 @@ const CallApiPrivate: React.FC<Props> = ({ endPoint }) => {
     return (
         <Box>
             <Button onClick={callApiPrivate}>call back-end - private</Button>
+            
             {state.status !== null && (
                 <Text>{JSON.stringify(state)}</Text>
             )}

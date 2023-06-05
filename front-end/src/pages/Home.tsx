@@ -1,9 +1,8 @@
 import { Box, Text, Heading } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import CallApiPublic from '../components/CallApiPublic';
 import CallApiPrivate from '../components/CallApiPrivate';
 
-function Home() {
+const Home = () => {
 
     const {
         isAuthenticated,
@@ -11,10 +10,8 @@ function Home() {
     } = useAuth0();
 
     return (
-        <Box className="App">
+        <Box className="App" ml="250px" w="100%">
             <Heading>Homepage</Heading>
-
-            <CallApiPublic />
 
             <CallApiPrivate endPoint="private"/>
 

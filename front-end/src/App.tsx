@@ -21,15 +21,15 @@ function App() {
     return (
         <Box className="App">
             <BrowserRouter >
-                <Box display='flex'>
+                <Box display='flex' bgColor='#F6F7F9' h={'100vh'}>
                     <Navbar />
 
                     <Routes>
-                        <Route path="/" Component={Home} />
-                        <Route path="/graphics" Component={Graphics} />
-                        <Route path="/statistics" Component={Statistics} />
-                        <Route path="/historic" Component={Historic} />
-                        <Route path="/profile" Component={Profile} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/graphics" element={<Graphics />} />
+                        <Route path="/statistics" element={<Statistics />} />
+                        <Route path="/historic" element={<Historic />} />
+                        <Route path="/profile" element={<Profile />} />
                     </Routes>
                 </Box>
             </BrowserRouter>
