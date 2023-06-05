@@ -170,7 +170,7 @@ const HappinessForm: React.FC<FormComponentProps> = ({ onSubmit }: FormComponent
                 />
             </Stack>
 
-            <Input type="submit" bgColor={'#3182CE'} color={'white'} fontWeight={'bold'} m={'1rem 1rem'} />
+            <Input type="submit" bgColor={'#3182CE'} color={'white'} fontWeight={'bold'} m={'1rem 1rem'} cursor={'pointer'}/>
         </form>
     );
 }
